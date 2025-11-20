@@ -10,9 +10,9 @@ EXPOSE 8080
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop 
 WORKDIR /opt/server 
 COPY --from=builder /opt/server /opt/server 
+RUN apk add python3-dev build-base linux headers pcrs-dev 
 RUN pip3 install -r requirements.txt 
-USER roboshop
-CMD ["sleep", "1000"]
+CMD ["sleep", "1000"] 
 # CMD ["uwsgi","--ini", "payment.ini"]
 # FROM python:3.9 
 # EXPOSE 8080 
